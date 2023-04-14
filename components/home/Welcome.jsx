@@ -26,19 +26,20 @@ function Welcome() {
     return (
         <View className="w-full">
             <View className="flex flex-col">
-                <Text className="text-[#3B0918] text-xl">Hello Username</Text>
+                {/* <Text className="text-[#3B0918] text-xl">Hello Username</Text> */}
                 <Text className="text-[#3B0918] font-bold text-2xl">
                     Find Your Book
                 </Text>
             </View>
 
             <View className="flex flex-row gap-3 justify-between items-center h-10 w-full mt-3">
-                <View className="flex-1 h-full bg-[#fff] justify-center items-center rounded-md">
+                <View className="flex-1 h-full justify-center items-center">
                     <TextInput
                         value={search}
                         onChangeText={(text) => setSearch(text)}
                         placeholder="Find favorite book"
-                        className="text-black"
+                        placeholderTextColor="lightgray"
+                        className="bg-[#fff] text-black w-full p-2 rounded-md"
                     />
                 </View>
                 <TouchableOpacity className="flex justify-center items-center">

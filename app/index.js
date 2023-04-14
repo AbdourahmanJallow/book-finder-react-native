@@ -1,11 +1,10 @@
 import { View, Text, SafeAreaView, ScrollView } from "react-native";
 import { useRouter, Stack } from "expo-router";
 import { useState } from "react";
-// import { HeaderButton, Welcome } from "../components";
 import HeaderButton from "../components/button/HeaderButton";
-import Welcome from "../components/pages/Welcome";
-import Ionicons from "@expo/vector-icons/Ionicons";
-import { Feather } from "@expo/vector-icons";
+import FeaturedBooks from "../components/home/FeaturedBooks";
+import Welcome from "../components/home/Welcome";
+import { Feather, Ionicons } from "@expo/vector-icons";
 
 const Home = () => {
     /* Colors
@@ -47,6 +46,7 @@ const Home = () => {
             <ScrollView showsVerticalScrollIndicator={false}>
                 <View className="flex-1 p-4 w-full">
                     <Welcome />
+                    <FeaturedBooks />
                 </View>
             </ScrollView>
         </SafeAreaView>
