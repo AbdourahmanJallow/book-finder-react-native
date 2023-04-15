@@ -10,8 +10,15 @@ import BookCard from "../cards/BookCard";
 import useFetch from "../../hooks/useFetch";
 
 function FeaturedBooks() {
+    const [refreshing, setRefreshing] = useState(false);
     const { data, loading, error, refetch } = useFetch();
     const handlePress = () => {};
+
+    // const onRefresh = useCallback(() => {
+    //     setRefreshing(true);
+    //     refetch();
+    //     setRefreshing(false);
+    // }, []);
 
     return (
         <View className="mt-5 p-2">
@@ -41,7 +48,7 @@ function FeaturedBooks() {
                         horizontal
                         showsHorizontalScrollIndicator={false}
                         keyExtractor={(item) =>
-                            item.canonical_published_work_id
+                            item?.canonical_published_work_id
                         }
                     />
                 )}

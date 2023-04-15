@@ -15,21 +15,26 @@ function useFetch() {
             "X-RapidAPI-Host": "book-finder1.p.rapidapi.com"
         },
         // params: {
-        //     // series: "Wings of fire",
+        //     series: "Wings of fire",
         //     book_type: "Fiction",
         //     lexile_min: "600",
         //     lexile_max: "800",
         //     results_per_page: "25",
         //     page: "1"
         // }
-        params: { categories: "Real Life", results_per_page: "25", page: "1" }
+        params: {
+            categories: "Science & Technology",
+            results_per_page: "25",
+            page: "1"
+        }
     };
 
     const fetchData = async () => {
         setLoading(true);
         try {
             const response = await axios.request(options);
-            setData(response.data.data);
+            setData(response.data.results);
+            console.log(response.data.results);
             setLoading(false);
         } catch (error) {
             setError(error.message);

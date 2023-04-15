@@ -11,18 +11,25 @@ import { AntDesign } from "@expo/vector-icons";
 
 const categories = [
     "Fiction",
-    "History",
-    "Adventure",
-    "Science",
-    "Law",
-    "Crime",
-    "Fantasy",
-    "Classics"
+    "Animals",
+    "Hobbies",
+    "Mystery & Suspense",
+    "Science Fiction & Fantasy",
+    "Creativity & Music",
+    "Science & Technology",
+    "Sports & Outdoors",
+    "General Literature",
+    "Real Life",
+    "Reference",
+    "Bugs & Pets",
+    "Art"
 ];
 
 function Welcome() {
     const [search, setSearch] = useState("");
     const [activeBtn, setActiveBtn] = useState("Fiction");
+
+    const handlePress = () => {};
     return (
         <View className="w-full">
             <View className="flex flex-col">
@@ -42,7 +49,10 @@ function Welcome() {
                         className="bg-[#fff] text-black w-full p-2 rounded-md"
                     />
                 </View>
-                <TouchableOpacity className="flex justify-center items-center">
+                <TouchableOpacity
+                    className="flex justify-center items-center"
+                    onPress={handlePress}
+                >
                     <AntDesign name="find" size={28} color="black" />
                 </TouchableOpacity>
             </View>
