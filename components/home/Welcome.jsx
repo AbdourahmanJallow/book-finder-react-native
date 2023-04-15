@@ -10,26 +10,19 @@ import {
 import { AntDesign } from "@expo/vector-icons";
 
 const categories = [
-    "Fiction",
-    "Animals",
-    "Hobbies",
-    "Mystery & Suspense",
-    "Science Fiction & Fantasy",
-    "Creativity & Music",
-    "Science & Technology",
-    "Sports & Outdoors",
-    "General Literature",
     "Real Life",
-    "Reference",
-    "Bugs & Pets",
-    "Art"
+    "Animals, Bugs & Pets",
+    "General Literature",
+    "Art, Creativity & Music",
+    "Science & Technology",
+    "Hobbies, Sports & Outdoors",
+    "Mystery & Suspense; Science Fiction & Fantasy",
+    "Reference"
 ];
 
-function Welcome() {
-    const [search, setSearch] = useState("");
-    const [activeBtn, setActiveBtn] = useState("Fiction");
+function Welcome({ search, setSearch, handlePress }) {
+    const [category, setCategory] = useState("");
 
-    const handlePress = () => {};
     return (
         <View className="w-full">
             <View className="flex flex-col">
@@ -65,11 +58,11 @@ function Welcome() {
                     renderItem={({ item }) => (
                         <TouchableOpacity
                             className={`py-1 px-3 border-2 ${
-                                activeBtn === item
+                                category === item
                                     ? "border-[#3B0918]"
                                     : "border-gray-200"
                             }  rounded-full`}
-                            onPress={() => setActiveBtn(item)}
+                            onPress={() => setCategory(item)}
                         >
                             <Text>{item}</Text>
                         </TouchableOpacity>

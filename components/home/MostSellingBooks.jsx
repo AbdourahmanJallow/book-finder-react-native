@@ -6,15 +6,16 @@ import {
     FlatList,
     ActivityIndicator
 } from "react-native";
-import BookCard from "../cards/BookCard";
+import SellingBookCard from "../cards/SellingBookCard";
 import useFetch from "../../hooks/useFetch";
 import { useRouter } from "expo-router";
 
-function FeaturedBooks({ category }) {
+function MostSellingBooks() {
+    const [searchParam, setSearchParam] = useState("Real Life");
     const router = useRouter();
 
     const { data, loading, error, refetch } = useFetch("search", {
-        title: "Malcolm X",
+        title: "Atomic",
         results_per_page: "25",
         page: "1",
         num_pages: 1
@@ -28,7 +29,7 @@ function FeaturedBooks({ category }) {
         <View className="mt-5 p-2">
             <View className="flex flex-row justify-between items-center">
                 <Text className="text-xl text-[#B8390E] font-semibold">
-                    Featured Books
+                    Popular Books
                 </Text>
                 <TouchableOpacity className="p-2 bg-blue-50 rounded-sm">
                     <Text>Show all</Text>
@@ -41,25 +42,17 @@ function FeaturedBooks({ category }) {
                 ) : error ? (
                     <Text>Something went wrong</Text>
                 ) : (
-                    <FlatList
-                        data={data}
-                        renderItem={({ item }) => (
-                            <BookCard
-                                book={item}
-                                checkBookDetails={checkBookDetails}
-                            />
-                        )}
-                        contentContainerStyle={{
-                            columnGap: "10px"
-                        }}
-                        horizontal
-                        showsHorizontalScrollIndicator={false}
-                        keyExtractor={(item) => item?.work_id}
-                    />
+                    data?.map((book) => (
+                        <SellingBookCard
+                            book={book}
+                            checkBookDetails={checkBookDetails}
+                            key={`selling-book-${book.work_id}`}
+                        />
+                    ))
                 )}
             </View>
         </View>
     );
 }
 
-export default FeaturedBooks;
+export default MostSellingBooks;

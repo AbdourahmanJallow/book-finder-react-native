@@ -3,6 +3,7 @@ import { useRouter, Stack } from "expo-router";
 import { useState } from "react";
 import HeaderButton from "../components/button/HeaderButton";
 import FeaturedBooks from "../components/home/FeaturedBooks";
+import MostSellingBooks from "../components/home/MostSellingBooks";
 import Welcome from "../components/home/Welcome";
 import { Feather, Ionicons } from "@expo/vector-icons";
 
@@ -13,6 +14,9 @@ const Home = () => {
         cream: #FFF3D9
         rose red: #DC4731
      */
+    const [searchValue, setSearchValue] = useState("");
+    const router = useRouter();
+
     return (
         <SafeAreaView className="flex-1 bg-[#f3f3f3]">
             <Stack.Screen
@@ -45,8 +49,17 @@ const Home = () => {
             {/* Main Content */}
             <ScrollView showsVerticalScrollIndicator={false}>
                 <View className="flex-1 p-4 w-full">
-                    <Welcome />
-                    <FeaturedBooks />
+                    <Welcome
+                        searchValue={searchValue}
+                        setSearchValue={setSearchValue}
+                        handlePress={() => {
+                            if (searchValue) {
+                                router.push(`/search/${searchValue}`);
+                            }
+                        }}
+                    />
+                    <FeaturedBooks searchValue={searchValue} />
+                    <MostSellingBooks />
                 </View>
             </ScrollView>
         </SafeAreaView>
