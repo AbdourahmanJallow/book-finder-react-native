@@ -2,11 +2,11 @@ import React from "react";
 import { View, Text, TouchableOpacity, Image } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 
-function BookCard({ book, checkBookDetails }) {
+function BookCard({ book }) {
     return (
         <TouchableOpacity
             className="my-1 p-2 rounded-md shadow-sm bg-[#fafafa] w-52 h-64 min-h-fit"
-            onPress={() => checkBookDetails(book)}
+            // onPress={() => checkBookDetails(book)}
         >
             <View className="rounded-sm p-1 mb-1 h-[85%]">
                 <Image

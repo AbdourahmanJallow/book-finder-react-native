@@ -58,7 +58,7 @@ const Home = () => {
                             }
                         }}
                     />
-                    <FeaturedBooks searchValue={searchValue} />
+                    <FeaturedBooks />
                     <MostSellingBooks />
                 </View>
             </ScrollView>

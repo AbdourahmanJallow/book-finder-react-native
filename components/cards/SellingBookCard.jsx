@@ -2,23 +2,24 @@ import React from "react";
 import { View, Text, TouchableOpacity, Image } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 
-function SellingBookCard({ book, checkBookDetails }) {
+function SellingBookCard({ book }) {
     return (
         <TouchableOpacity
-            className="my-2 p-2 rounded-md shadow-sm bg-[#fafafa] flex flex-col justify-center items-center min-h-fit"
+            className="my-2 p-2 rounded-md shadow-sm bg-[#fafafa] flex flex-col min-h-fit"
             // onPress={() => checkBookDetails(book)}
         >
             {/* Book cover container plus book details */}
-            <View className="w-full flex-1 flex flex-row justify-center items-center">
-                <View className="p-1 mr-1 h-[250px] w-[25%]">
+            <View className="w-full flex flex-row justify-center items-center">
+                <TouchableOpacity className="p-1 mr-1 h-[150px] w-[150px]">
                     <Image
                         source={{
                             uri: book?.published_works[0]?.cover_art_url
                         }}
-                        className="w-full h-full rounded-sm"
+                        className="w-[80%] h-[80%] rounded-sm"
                         resizeMode="contain"
                     />
-                </View>
+                </TouchableOpacity>
+
                 <View className="flex flex-col">
                     <Text
                         className="text-[#B8390E] text-lg font-light px-1"

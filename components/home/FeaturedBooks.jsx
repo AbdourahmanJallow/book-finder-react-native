@@ -10,11 +10,11 @@ import BookCard from "../cards/BookCard";
 import useFetch from "../../hooks/useFetch";
 import { useRouter } from "expo-router";
 
-function FeaturedBooks({ category }) {
+function FeaturedBooks() {
     const router = useRouter();
 
     const { data, loading, error, refetch } = useFetch("search", {
-        title: "Malcolm X",
+        title: "Science",
         results_per_page: "25",
         page: "1",
         num_pages: 1
@@ -46,7 +46,7 @@ function FeaturedBooks({ category }) {
                         renderItem={({ item }) => (
                             <BookCard
                                 book={item}
-                                checkBookDetails={checkBookDetails}
+                                // checkBookDetails={checkBookDetails}
                             />
                         )}
                         contentContainerStyle={{
