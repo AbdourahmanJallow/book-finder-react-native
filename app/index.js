@@ -55,10 +55,11 @@ const Home = () => {
                         handlePress={() => {
                             if (searchValue) {
                                 router.push(`/search/${searchValue}`);
+                                setSearchValue("");
                             }
                         }}
                     />
-                    <FeaturedBooks />
+                    {/* <FeaturedBooks /> */}
                     <MostSellingBooks />
                 </View>
             </ScrollView>

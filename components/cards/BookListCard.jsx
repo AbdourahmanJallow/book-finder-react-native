@@ -2,25 +2,21 @@ import React from "react";
 import { View, Text, TouchableOpacity, Image } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 
-function SellingBookCard({ book }) {
+function BookListCard({ book }) {
     return (
-        <TouchableOpacity
-            className="my-2 p-2 rounded-md shadow-sm bg-[#fafafa] flex flex-col justify-center items-center min-h-fit"
-            // onPress={() => checkBookDetails(book)}
-        >
-            {/* Book cover container plus book details */}
+        <TouchableOpacity className="rounded-md shadow-sm bg-[#fafafa] flex flex-col min-h-fit">
             <View className="w-full flex flex-row justify-start">
-                <TouchableOpacity className="p-1 mr-1 h-[200px] w-[150px]">
+                <TouchableOpacity className="mr-1 h-[125px] w-[100px] flex justify-center items-center">
                     <Image
                         source={{
                             uri: book?.published_works[0]?.cover_art_url
                         }}
-                        className="w-[100%] h-[100%] rounded-sm"
+                        className="w-[100%] h-[100%] rounded-sm self-center"
                         // resizeMode="contain"
                     />
                 </TouchableOpacity>
 
-                <View className="flex flex-wrap">
+                <View className="flex flex-wrap p-1">
                     <Text
                         className="text-[#B8390E] text-lg font-light px-1 flex-wrap overflow-hidden"
                         numberOfLines={1}
@@ -57,20 +53,8 @@ function SellingBookCard({ book }) {
                     </View>
                 </View>
             </View>
-
-            {/* Summary */}
-            <View className="flex-1 mt-3">
-                {book.summary ? (
-                    <Text className="p-1 text-slate-500">
-                        Summary:{" "}
-                        <Text className="text-[#3b0918]"> {book?.summary}</Text>
-                    </Text>
-                ) : (
-                    <Text>No Summary</Text>
-                )}
-            </View>
         </TouchableOpacity>
     );
 }
 
-export default SellingBookCard;
+export default BookListCard;

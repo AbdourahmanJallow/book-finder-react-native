@@ -2,17 +2,15 @@ import React, { useEffect, useState } from "react";
 import {
     ActivityIndicator,
     FlatList,
-    Image,
     TouchableOpacity,
     View
 } from "react-native";
 import { Stack, useRouter, useSearchParams } from "expo-router";
 import { Text, SafeAreaView } from "react-native";
 import axios from "axios";
-
-import { ScreenHeaderBtn, NearbyJobCard } from "../../components";
-import { COLORS, icons, SIZES } from "../../constants";
-import styles from "../../styles/search";
+import BookListCard from "../../components/cards/BookListCard";
+import HeaderButton from "../../components/button/HeaderButton";
+import { AntDesign } from "@expo/vector-icons";
 
 const BookSearch = () => {
     const params = useSearchParams();
@@ -32,25 +30,24 @@ const BookSearch = () => {
                 method: "GET",
                 url: `https://book-finder1.p.rapidapi.com/api/search`,
                 headers: {
-                    "X-RapidAPI-Key":
-                        "1d0e28a84bmsh473183a6a508d70p14fbb7jsnb4c21f814180",
+                    "X-RapidAPI-Key": YourRapidApiKey,
                     "X-RapidAPI-Host": "book-finder1.p.rapidapi.com"
                 },
                 params: {
                     // ...query
-                    query: params.id
+                    title: params.id,
+                    page: page.toString(),
+                    results_per_page: "25",
+                    num_pages: 1
                 }
             };
-            //     params: {
-            //         query: params.id,
-            //         page: page.toString()
-            //     }
-            // };
 
             const response = await axios.request(options);
-            setSearchResult(response.data.data);
+            setSearchResult(response.data.results);
+            console.log(response.data.results);
         } catch (error) {
             setSearchError(error);
+            alert(error);
             console.log(error);
         } finally {
             setSearchLoader(false);
@@ -72,51 +69,58 @@ const BookSearch = () => {
     }, []);
 
     return (
-        <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.lightWhite }}>
+        <SafeAreaView
+            // style={{ flex: 1, backgroundColor: COLORS.lightWhite }}
+            className="flex-1 bg-[#f3f3f3]"
+        >
             <Stack.Screen
                 options={{
-                    headerStyle: { backgroundColor: COLORS.lightWhite },
+                    headerStyle: { backgroundColor: "#f4f4f4" },
                     headerShadowVisible: false,
+                    headerTitle: "",
                     headerLeft: () => (
-                        <ScreenHeaderBtn
-                            iconUrl={icons.left}
-                            dimension="60%"
+                        <HeaderButton
+                            icon={
+                                <AntDesign
+                                    name="arrowleft"
+                                    size={24}
+                                    color="black"
+                                />
+                            }
                             handlePress={() => router.back()}
                         />
-                    ),
-                    headerTitle: ""
+                    )
                 }}
             />
 
             <FlatList
                 data={searchResult}
                 renderItem={({ item }) => (
-                    <NearbyJobCard
-                        job={item}
-                        handleNavigate={() =>
-                            router.push(`/job-details/${item.job_id}`)
-                        }
+                    <BookListCard
+                        book={item}
+                        // handleNavigate={() =>
+                        //     router.push(`/job-details/${item.job_id}`)
+                        // }
                     />
                 )}
-                keyExtractor={(item) => item.job_id}
+                keyExtractor={(item) => item.work_id}
                 contentContainerStyle={{
-                    padding: SIZES.medium,
-                    rowGap: SIZES.medium
+                    padding: 16,
+                    rowGap: 16
                 }}
                 ListHeaderComponent={() => (
                     <>
-                        <View style={styles.container}>
-                            <Text style={styles.searchTitle}>{params.id}</Text>
-                            <Text style={styles.noOfSearchedJobs}>
-                                Job Opportunities
+                        <View className="w-full">
+                            <Text className="font-bold text-xl text-[#B8390E]">
+                                {params.id}
+                            </Text>
+                            <Text className="font-light text-md text-[#DC4731]">
+                                Best selling books
                             </Text>
                         </View>
-                        <View style={styles.loaderContainer}>
+                        <View className="mt-6">
                             {searchLoader ? (
-                                <ActivityIndicator
-                                    size="large"
-                                    color={COLORS.primary}
-                                />
+                                <ActivityIndicator size="large" color="black" />
                             ) : (
                                 searchError && (
                                     <Text>Oops something went wrong</Text>
@@ -126,28 +130,31 @@ const BookSearch = () => {
                     </>
                 )}
                 ListFooterComponent={() => (
-                    <View style={styles.footerContainer}>
+                    <View className="flex flex-row justify-center items-center gap-3">
                         <TouchableOpacity
-                            style={styles.paginationButton}
+                            className="justify-center items-center w-[30px] h-[30px] rounded-sm"
                             onPress={() => handlePagination("left")}
                         >
-                            <Image
-                                source={icons.chevronLeft}
-                                style={styles.paginationImage}
-                                resizeMode="contain"
+                            <AntDesign
+                                name="arrowleft"
+                                size={24}
+                                color="black"
                             />
                         </TouchableOpacity>
-                        <View style={styles.paginationTextBox}>
-                            <Text style={styles.paginationText}>{page}</Text>
+
+                        <View className="justify-center items-center w-[30px] h-[30px]">
+                            <Text className="font-bold text-xl text-[#B8390E]">
+                                {page}
+                            </Text>
                         </View>
                         <TouchableOpacity
-                            style={styles.paginationButton}
+                            className="justify-center items-center w-[30px] h-[30px] rounded-sm"
                             onPress={() => handlePagination("right")}
                         >
-                            <Image
-                                source={icons.chevronRight}
-                                style={styles.paginationImage}
-                                resizeMode="contain"
+                            <AntDesign
+                                name="arrowright"
+                                size={24}
+                                color="black"
                             />
                         </TouchableOpacity>
                     </View>

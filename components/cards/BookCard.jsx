@@ -19,8 +19,8 @@ function BookCard({ book }) {
             </View>
             <View className="flex flex-col justify-center flex-1">
                 <Text
-                    className="text-[#B8390E] text-md font-light px-1"
-                    numberOfLines={2}
+                    className="text-[#B8390E] text-md font-light px-1 overflow-x-hidden flex-wrap"
+                    numberOfLines={1}
                 >
                     {book?.title}
                 </Text>

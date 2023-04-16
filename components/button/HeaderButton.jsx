@@ -1,9 +1,9 @@
 import React from "react";
 import { TouchableOpacity, View, Text } from "react-native";
 
-function HeaderButton({ icon, text }) {
+function HeaderButton({ icon, text, handlePress }) {
     return (
-        <TouchableOpacity>
+        <TouchableOpacity onPress={handlePress ? handlePress : () => {}}>
             <View className="flex flex-col justify-center items-center">
                 <View
                     className="flex justify-center items-center px-3 py-1 rounded-md"

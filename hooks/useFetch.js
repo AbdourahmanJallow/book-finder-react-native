@@ -10,7 +10,7 @@ function useFetch(endpoint, query) {
         method: "GET",
         url: `https://book-finder1.p.rapidapi.com/api/${endpoint}`,
         headers: {
-            "X-RapidAPI-Key": YouRapidApiKey,
+            "X-RapidAPI-Key": YourRapidApiKey,
             "X-RapidAPI-Host": "book-finder1.p.rapidapi.com"
         },
         params: {

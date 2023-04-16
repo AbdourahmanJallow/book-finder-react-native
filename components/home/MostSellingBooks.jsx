@@ -11,11 +11,10 @@ import useFetch from "../../hooks/useFetch";
 import { useRouter } from "expo-router";
 
 function MostSellingBooks() {
-    // const [searchParam, setSearchParam] = useState("Real Life");
     const router = useRouter();
 
     const { data, loading, error, refetch } = useFetch("search", {
-        title: "Science",
+        categories: "Science Fiction & Fantasy",
         results_per_page: "25",
         page: "1",
         num_pages: 1

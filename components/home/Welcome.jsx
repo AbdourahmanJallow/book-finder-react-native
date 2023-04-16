@@ -8,25 +8,27 @@ import {
     Image
 } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
+import { useRouter } from "expo-router";
 
 const categories = [
+    "Science & Technology",
     "Real Life",
     "Animals, Bugs & Pets",
     "General Literature",
     "Art, Creativity & Music",
-    "Science & Technology",
     "Hobbies, Sports & Outdoors",
-    "Mystery & Suspense; Science Fiction & Fantasy",
+    "Mystery & Suspense",
+    "Science Fiction & Fantasy",
     "Reference"
 ];
 
-function Welcome({ search, setSearch, handlePress }) {
+function Welcome({ searchValue, setSearchValue, handlePress }) {
     const [category, setCategory] = useState("");
+    const router = useRouter();
 
     return (
         <View className="w-full">
             <View className="flex flex-col">
-                {/* <Text className="text-[#3B0918] text-xl">Hello Username</Text> */}
                 <Text className="text-[#3B0918] font-bold text-2xl">
                     Find Your Book
                 </Text>
@@ -35,8 +37,8 @@ function Welcome({ search, setSearch, handlePress }) {
             <View className="flex flex-row gap-3 justify-between items-center h-10 w-full mt-3">
                 <View className="flex-1 h-full justify-center items-center">
                     <TextInput
-                        value={search}
-                        onChangeText={(text) => setSearch(text)}
+                        value={searchValue}
+                        onChangeText={(text) => setSearchValue(text)}
                         placeholder="Find favorite book"
                         placeholderTextColor="lightgray"
                         className="bg-[#fff] text-black w-full p-2 rounded-md"
@@ -59,12 +61,21 @@ function Welcome({ search, setSearch, handlePress }) {
                         <TouchableOpacity
                             className={`py-1 px-3 border-2 ${
                                 category === item
-                                    ? "border-[#3B0918]"
+                                    ? "bg-[#3B0918] text-[#fff]"
                                     : "border-gray-200"
                             }  rounded-full`}
-                            onPress={() => setCategory(item)}
+                            onPress={() => {
+                                setCategory(item);
+                                router.push(`/search/${item}`);
+                            }}
                         >
-                            <Text>{item}</Text>
+                            <Text
+                                className={`${
+                                    category === item && "text-[#fff]"
+                                }`}
+                            >
+                                {item}
+                            </Text>
                         </TouchableOpacity>
                     )}
                     keyExtractor={(item) => item}
