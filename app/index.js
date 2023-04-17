@@ -7,6 +7,7 @@ import MostSellingBooks from "../components/home/MostSellingBooks";
 import Welcome from "../components/home/Welcome";
 import { Feather, Ionicons, FontAwesome5 } from "@expo/vector-icons";
 import { createStackNavigator } from "@react-navigation/stack";
+import BottomNavigationBar from "../components/home/BottomNavigationBar";
 
 const Home = () => {
     /* Colors
@@ -66,6 +67,7 @@ const Home = () => {
                     />
                     <MostSellingBooks />
                 </View>
+                <BottomNavigationBar />
             </ScrollView>
         </SafeAreaView>
     );

@@ -1,5 +1,11 @@
 import React from "react";
-import { View, Text, SafeAreaView } from "react-native";
+import {
+    View,
+    Text,
+    SafeAreaView,
+    ImageBackground,
+    TouchableOpacity
+} from "react-native";
 import HeaderButton from "../../components/button/HeaderButton";
 import { AntDesign } from "@expo/vector-icons";
 import { useRouter, Stack } from "expo-router";
@@ -9,23 +15,28 @@ function menu() {
     const router = useRouter();
 
     return (
-        <SafeAreaView
+        <View
             style={{
-                flex: 1
+                flex: 1,
+                height: "100%",
+                justifyContent: "center",
+                alignItems: "center",
+                resizeMode: "cover"
             }}
+            className="bg-slate-700"
         >
             <Stack.Screen
                 options={{
-                    headerStyle: { backgroundColor: "#f4f4f4" },
+                    headerStyle: { backgroundColor: "#334155" },
                     headerShadowVisible: false,
-                    // headerTitle: "",
+                    headerTitle: "Navigation Menu",
                     headerLeft: () => (
                         <HeaderButton
                             icon={
-                                <AntDesign
-                                    name="arrowleft"
-                                    size={24}
-                                    color="black"
+                                <FontAwesome5
+                                    name="times"
+                                    size={30}
+                                    color="#fff"
                                 />
                             }
                             handlePress={() => router.back()}
@@ -33,23 +44,33 @@ function menu() {
                     )
                 }}
             />
+            {/* <ImageBackground
+                source={require("../../assets/bg.jpg")}
+                style={{
+                    flex: 1,
+                    resizeMode: "cover", // specify the image resize mode
+                    justifyContent: "center"
+                }}
+            > */}
             <View
                 style={{
                     flex: 1,
-                    justifyContent: "center",
-                    alignItems: "center"
+                    resizeMode: "cover"
+                    // backgroundColor: "rgba(0,0,0,0.5)"
                 }}
+                className="flex-col gap-6 justify-center items-center"
             >
-                <Text
-                    style={{
-                        color: "black",
-                        fontSize: 20
-                    }}
+                <TouchableOpacity onPress={() => router.push("/")}>
+                    <Text className="text-3xl text-white">Home</Text>
+                </TouchableOpacity>
+                <TouchableOpacity
+                    onPress={() => router.push("/screens/profile")}
                 >
-                    Menu
-                </Text>
+                    <Text className="text-3xl text-white">Profile</Text>
+                </TouchableOpacity>
             </View>
-        </SafeAreaView>
+            {/* </ImageBackground> */}
+        </View>
     );
 }
 
