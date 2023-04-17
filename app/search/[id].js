@@ -29,8 +29,7 @@ const BookSearch = () => {
                 method: "GET",
                 url: `https://book-finder1.p.rapidapi.com/api/search`,
                 headers: {
-                    "X-RapidAPI-Key":
-                        "1d0e28a84bmsh473183a6a508d70p14fbb7jsnb4c21f814180",
+                    "X-RapidAPI-Key": YourRapidApiKey,
                     "X-RapidAPI-Host": "book-finder1.p.rapidapi.com"
                 },
                 params: {
