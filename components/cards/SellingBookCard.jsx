@@ -1,15 +1,28 @@
 import React from "react";
 import { View, Text, TouchableOpacity, Image } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
+import { useRouter } from "expo-router";
 
 function SellingBookCard({ book }) {
+    const router = useRouter();
     return (
         <TouchableOpacity
-            className="my-2 p-2 rounded-md shadow-sm bg-[#fafafa] flex flex-col justify-center items-center min-h-fit"
-            // onPress={() => checkBookDetails(book)}
+            className="my-2 p-2 rounded-md shadow-sm bg-[#fafafa] min-h-fit"
+            onPress={() =>
+                router.push({
+                    pathname: "/book-details/bookdetails",
+                    params: book
+                })
+            }
         >
             {/* Book cover container plus book details */}
-            <View className="w-full flex flex-row justify-start">
+            <Text
+                className="text-[#B8390E] text-xl font-bold px-1 truncate"
+                numberOfLines={1}
+            >
+                {book?.title}
+            </Text>
+            <View className="flex-row h-[200px]">
                 <TouchableOpacity className="p-1 mr-1 h-[200px] w-[150px]">
                     <Image
                         source={{
@@ -20,26 +33,20 @@ function SellingBookCard({ book }) {
                     />
                 </TouchableOpacity>
 
-                <View className="flex flex-wrap">
-                    <Text
-                        className="text-[#B8390E] text-lg font-light px-1 flex-wrap overflow-hidden"
-                        numberOfLines={1}
-                    >
-                        {book?.title}
-                    </Text>
-                    <Text className="text-slate-500 px-1">
+                <View className="h-[100%] w-[70%] overflow-hidden">
+                    <Text className="text-gray-400 px-1">
                         Author:{" "}
                         <Text className="text-[#3B0918] text-xs font-light px-1">
                             {book?.authors[0]}
                         </Text>
                     </Text>
-                    <Text className="text-slate-500 px-1">
+                    <Text className="text-gray-400 px-1">
                         Language:{" "}
                         <Text className="text-[#3B0918] text-xs font-light px-1">
                             {book?.language}
                         </Text>
                     </Text>
-                    <Text className="text-slate-500 px-1">Categories: </Text>
+                    <Text className="text-gray-400 px-1">Categories: </Text>
                     {book?.categories.map((categoryName, i) => (
                         <Text
                             className="text-[#3B0918] text-xs font-light px-1"
@@ -50,7 +57,7 @@ function SellingBookCard({ book }) {
                         </Text>
                     ))}
                     <View className="flex flex-row justify-start items-center px-1">
-                        <Text className="text-slate-500">Page count: </Text>
+                        <Text className="text-gray-400">Page count: </Text>
                         <Text className="text-[#3B0918] text-xs font-light px-1">
                             {book?.page_count}
                         </Text>
@@ -61,7 +68,7 @@ function SellingBookCard({ book }) {
             {/* Summary */}
             <View className="flex-1 mt-3">
                 {book.summary ? (
-                    <Text className="p-1 text-slate-500">
+                    <Text className="p-1 text-gray-400">
                         Summary:{" "}
                         <Text className="text-[#3b0918]"> {book?.summary}</Text>
                     </Text>

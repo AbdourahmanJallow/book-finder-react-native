@@ -1,26 +1,19 @@
 import React from "react";
 import { TouchableOpacity, View, Text } from "react-native";
 
-function HeaderButton({ icon, text, handlePress }) {
+function HeaderButton({ icon, handlePress }) {
     return (
-        <TouchableOpacity onPress={handlePress ? handlePress : () => {}}>
+        <TouchableOpacity onPress={handlePress} className="rounded-full p-1">
             <View className="flex flex-col justify-center items-center">
                 <View
-                    className="flex justify-center items-center px-3 py-1 rounded-md"
+                    className="flex justify-center items-center rounded-md"
                     style={{
-                        backgroundColor: "#f4f4f4",
+                        // backgroundColor: "#f4f4f4",
                         borderRadius: "5px"
                     }}
                 >
                     {icon}
                 </View>
-                {text ? (
-                    <Text className="flex justify-center items-center">
-                        {text}
-                    </Text>
-                ) : (
-                    ""
-                )}
             </View>
         </TouchableOpacity>
     );

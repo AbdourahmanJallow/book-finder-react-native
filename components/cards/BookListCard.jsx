@@ -5,7 +5,13 @@ import { Ionicons } from "@expo/vector-icons";
 function BookListCard({ book }) {
     return (
         <TouchableOpacity className="rounded-md shadow-sm bg-[#fafafa] flex flex-col min-h-fit">
-            <View className="w-full flex flex-row justify-start">
+            <Text
+                className="text-[#B8390E] text-lg font-bold p-2 flex-wrap overflow-hidden"
+                numberOfLines={1}
+            >
+                {book?.title}
+            </Text>
+            <View className="w-full flex flex-row justify-start p-2">
                 <TouchableOpacity className="mr-1 h-[125px] w-[100px] flex justify-center items-center">
                     <Image
                         source={{
@@ -17,12 +23,6 @@ function BookListCard({ book }) {
                 </TouchableOpacity>
 
                 <View className="flex flex-wrap p-1">
-                    <Text
-                        className="text-[#B8390E] text-lg font-light px-1 flex-wrap overflow-hidden"
-                        numberOfLines={1}
-                    >
-                        {book?.title}
-                    </Text>
                     <Text className="text-slate-500 px-1">
                         Author:{" "}
                         <Text className="text-[#3B0918] text-xs font-light px-1">

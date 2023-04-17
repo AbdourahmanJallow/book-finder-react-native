@@ -14,15 +14,18 @@ function MostSellingBooks() {
     const router = useRouter();
 
     const { data, loading, error, refetch } = useFetch("search", {
-        categories: "Science Fiction & Fantasy",
+        title: "Computer science",
         results_per_page: "25",
         page: "1",
         num_pages: 1
     });
 
-    // const checkBookDetails = (book) => {
-    //     router.push(`/book-details/${book.work_id}`);
-    // };
+    const checkBookDetails = (book) => {
+        router.push({
+            pathname: "/app/book-details/bookdetails.js",
+            params: book
+        });
+    };
 
     return (
         <View className="mt-5 p-2">
@@ -30,9 +33,9 @@ function MostSellingBooks() {
                 <Text className="text-xl text-[#B8390E] font-semibold">
                     Popular Books
                 </Text>
-                <TouchableOpacity className="p-2 bg-blue-50 rounded-sm">
+                {/* <TouchableOpacity className="p-2 bg-blue-50 rounded-sm">
                     <Text>Show all</Text>
-                </TouchableOpacity>
+                </TouchableOpacity> */}
             </View>
 
             <View className="mt-3">

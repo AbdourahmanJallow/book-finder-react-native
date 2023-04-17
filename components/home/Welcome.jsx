@@ -11,15 +11,19 @@ import { AntDesign } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
 
 const categories = [
-    "Science & Technology",
-    "Real Life",
-    "Animals, Bugs & Pets",
-    "General Literature",
-    "Art, Creativity & Music",
+    "Art & Photography",
+    "Computer Programming",
+    "Education & Teaching",
     "Hobbies, Sports & Outdoors",
+    "History",
+    "Literature & Fiction",
     "Mystery & Suspense",
-    "Science Fiction & Fantasy",
-    "Reference"
+    "Politics & Social Sciences",
+    "Reference",
+    "Romance",
+    "Religion & Sprituality",
+    "Science & Math",
+    "Science Fiction & Fantasy"
 ];
 
 function Welcome({ searchValue, setSearchValue, handlePress }) {
@@ -28,8 +32,8 @@ function Welcome({ searchValue, setSearchValue, handlePress }) {
 
     return (
         <View className="w-full">
-            <View className="flex flex-col">
-                <Text className="text-[#3B0918] font-bold text-2xl">
+            <View className="flex flex-col mb-1">
+                <Text className="text-[#3B0918] font-bold text-4xl">
                     Find Your Book
                 </Text>
             </View>
@@ -40,8 +44,8 @@ function Welcome({ searchValue, setSearchValue, handlePress }) {
                         value={searchValue}
                         onChangeText={(text) => setSearchValue(text)}
                         placeholder="Find favorite book"
-                        placeholderTextColor="lightgray"
-                        className="bg-[#fff] text-black w-full p-2 rounded-md"
+                        placeholderTextColor="gray"
+                        className="bg-[#fff] text-black h-full w-full p-3 rounded-md"
                     />
                 </View>
                 <TouchableOpacity
@@ -53,7 +57,7 @@ function Welcome({ searchValue, setSearchValue, handlePress }) {
             </View>
 
             {/* Categories */}
-            <View className="mt-6 w-full">
+            <View className="mt-7 w-full">
                 <FlatList
                     horizontal
                     data={categories}

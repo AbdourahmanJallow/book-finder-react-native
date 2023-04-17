@@ -24,13 +24,13 @@ const BookSearch = () => {
     const handleSearch = async () => {
         setSearchLoader(true);
         setSearchResult([]);
-
         try {
             const options = {
                 method: "GET",
                 url: `https://book-finder1.p.rapidapi.com/api/search`,
                 headers: {
-                    "X-RapidAPI-Key": YourRapidApiKey,
+                    "X-RapidAPI-Key":
+                        "1d0e28a84bmsh473183a6a508d70p14fbb7jsnb4c21f814180",
                     "X-RapidAPI-Host": "book-finder1.p.rapidapi.com"
                 },
                 params: {
@@ -143,7 +143,7 @@ const BookSearch = () => {
                         </TouchableOpacity>
 
                         <View className="justify-center items-center w-[30px] h-[30px]">
-                            <Text className="font-bold text-xl text-[#B8390E]">
+                            <Text className="font-bold text-3xl text-[#B8390E]">
                                 {page}
                             </Text>
                         </View>

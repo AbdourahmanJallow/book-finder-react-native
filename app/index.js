@@ -5,7 +5,8 @@ import HeaderButton from "../components/button/HeaderButton";
 import FeaturedBooks from "../components/home/FeaturedBooks";
 import MostSellingBooks from "../components/home/MostSellingBooks";
 import Welcome from "../components/home/Welcome";
-import { Feather, Ionicons } from "@expo/vector-icons";
+import { Feather, Ionicons, FontAwesome5 } from "@expo/vector-icons";
+import { createStackNavigator } from "@react-navigation/stack";
 
 const Home = () => {
     /* Colors
@@ -21,15 +22,18 @@ const Home = () => {
         <SafeAreaView className="flex-1 bg-[#f3f3f3]">
             <Stack.Screen
                 options={{
-                    headerStyle: { backgroundColor: "#f4f4f4" },
+                    headerStyle: { backgroundColor: "#f4f4f4", padding: 8 },
                     headerShadowVisible: false,
                     headerTitle: "",
                     headerLeft: () => (
                         <HeaderButton
+                            handlePress={() => {
+                                router.push("/screens/menu");
+                            }}
                             icon={
                                 <Ionicons
                                     name={"md-menu"}
-                                    size={24}
+                                    size={26}
                                     color="black"
                                 />
                             }
@@ -37,18 +41,19 @@ const Home = () => {
                     ),
                     headerRight: () => (
                         <HeaderButton
+                            handlePress={() => {
+                                router.push("/screens/profile");
+                            }}
                             icon={
-                                <Feather name="user" size={24} color="black" />
+                                <Feather name="user" size={26} color="black" />
                             }
-                            text="profile"
                         />
                     )
                 }}
             />
 
-            {/* Main Content */}
             <ScrollView showsVerticalScrollIndicator={false}>
-                <View className="flex-1 p-4 w-full">
+                <View className="flex-1 p-4 w-full mt-3">
                     <Welcome
                         searchValue={searchValue}
                         setSearchValue={setSearchValue}
@@ -59,7 +64,6 @@ const Home = () => {
                             }
                         }}
                     />
-                    {/* <FeaturedBooks /> */}
                     <MostSellingBooks />
                 </View>
             </ScrollView>
