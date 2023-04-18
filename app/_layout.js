@@ -1,6 +1,7 @@
-import { Stack } from "expo-router";
+import { Stack, useRouter } from "expo-router";
 
 function Layout() {
+    const router = useRouter();
     return <Stack />;
 }
 

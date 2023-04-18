@@ -6,7 +6,7 @@ function BookListCard({ book }) {
     return (
         <TouchableOpacity className="rounded-md shadow-sm bg-[#fafafa] flex flex-col min-h-fit">
             <Text
-                className="text-[#B8390E] text-lg font-bold p-2 flex-wrap overflow-hidden"
+                className="text-[#001F3D] text-lg font-bold p-2 flex-wrap overflow-hidden"
                 numberOfLines={1}
             >
                 {book?.title}
@@ -25,20 +25,20 @@ function BookListCard({ book }) {
                 <View className="flex flex-wrap p-1">
                     <Text className="text-slate-500 px-1">
                         Author:{" "}
-                        <Text className="text-[#3B0918] text-xs font-light px-1">
-                            {book?.authors[0]}
+                        <Text className=" text-xs font-light px-1">
+                            {book?.authors[0] ?? "N/A"}
                         </Text>
                     </Text>
                     <Text className="text-slate-500 px-1">
                         Language:{" "}
-                        <Text className="text-[#3B0918] text-xs font-light px-1">
+                        <Text className="text-xs font-light px-1">
                             {book?.language}
                         </Text>
                     </Text>
                     <Text className="text-slate-500 px-1">Categories: </Text>
                     {book?.categories.map((categoryName, i) => (
                         <Text
-                            className="text-[#3B0918] text-xs font-light px-1"
+                            className="text-xs font-light px-1 text-slate-500"
                             key={i}
                             numberOfLines={1}
                         >
@@ -47,7 +47,7 @@ function BookListCard({ book }) {
                     ))}
                     <View className="flex flex-row justify-start items-center px-1">
                         <Text className="text-slate-500">Page count: </Text>
-                        <Text className="text-[#3B0918] text-xs font-light px-1">
+                        <Text className="text-xs font-light px-1 text-slate-500">
                             {book?.page_count}
                         </Text>
                     </View>

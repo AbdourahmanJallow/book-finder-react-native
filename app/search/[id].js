@@ -29,8 +29,7 @@ const BookSearch = () => {
                 method: "GET",
                 url: `https://book-finder1.p.rapidapi.com/api/search`,
                 headers: {
-                    "X-RapidAPI-Key":
-                        "1d0e28a84bmsh473183a6a508d70p14fbb7jsnb4c21f814180",
+                    "X-RapidAPI-Key": YourRapidApiKey,
                     "X-RapidAPI-Host": "book-finder1.p.rapidapi.com"
                 },
                 params: {
@@ -111,10 +110,10 @@ const BookSearch = () => {
                 ListHeaderComponent={() => (
                     <>
                         <View className="w-full">
-                            <Text className="font-bold text-xl text-[#B8390E]">
+                            <Text className="font-bold text-2xl text-[#001F3D]">
                                 {params.id}
                             </Text>
-                            <Text className="font-light text-md text-[#DC4731]">
+                            <Text className="font-light text-xs text-[#B6CBE1]">
                                 Best selling books
                             </Text>
                         </View>
@@ -143,7 +142,7 @@ const BookSearch = () => {
                         </TouchableOpacity>
 
                         <View className="justify-center items-center w-[30px] h-[30px]">
-                            <Text className="font-bold text-3xl text-[#B8390E]">
+                            <Text className="font-bold text-3xl text-[#1863D6]">
                                 {page}
                             </Text>
                         </View>

@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
+// import { API_KEY } from "@env";
 
 function useFetch(endpoint, query) {
     const [data, setData] = useState([]);
@@ -10,8 +11,7 @@ function useFetch(endpoint, query) {
         method: "GET",
         url: `https://book-finder1.p.rapidapi.com/api/${endpoint}`,
         headers: {
-            "X-RapidAPI-Key":
-                "1d0e28a84bmsh473183a6a508d70p14fbb7jsnb4c21f814180",
+            "X-RapidAPI-Key": YourRapidApiKey,
             "X-RapidAPI-Host": "book-finder1.p.rapidapi.com"
         },
         params: {

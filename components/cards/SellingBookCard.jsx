@@ -17,12 +17,12 @@ function SellingBookCard({ book }) {
         >
             {/* Book cover container plus book details */}
             <Text
-                className="text-[#B8390E] text-xl font-bold px-1 truncate"
+                className="text-[#001F3D] text-xl font-bold px-1 truncate mb-3"
                 numberOfLines={1}
             >
                 {book?.title}
             </Text>
-            <View className="flex-row h-[200px]">
+            <View className="flex-row h-[200px] mb-3">
                 <TouchableOpacity className="p-1 mr-1 h-[200px] w-[150px]">
                     <Image
                         source={{
@@ -34,22 +34,24 @@ function SellingBookCard({ book }) {
                 </TouchableOpacity>
 
                 <View className="h-[100%] w-[70%] overflow-hidden">
-                    <Text className="text-gray-400 px-1">
+                    <Text className="text-gray-400 px-1 text-lg">
                         Author:{" "}
-                        <Text className="text-[#3B0918] text-xs font-light px-1">
-                            {book?.authors[0]}
+                        <Text className="text-xs font-light px-1">
+                            {book?.authors[0] ?? "N/A"}
                         </Text>
                     </Text>
-                    <Text className="text-gray-400 px-1">
+                    <Text className="text-gray-400 px-1 text-lg">
                         Language:{" "}
-                        <Text className="text-[#3B0918] text-xs font-light px-1">
+                        <Text className="text-xs font-light px-1">
                             {book?.language}
                         </Text>
                     </Text>
-                    <Text className="text-gray-400 px-1">Categories: </Text>
+                    <Text className="text-gray-400 px-1 text-lg">
+                        Categories:{" "}
+                    </Text>
                     {book?.categories.map((categoryName, i) => (
                         <Text
-                            className="text-[#3B0918] text-xs font-light px-1"
+                            className="text-xs font-light px-1 text-gray-400"
                             key={i}
                             numberOfLines={1}
                         >
@@ -57,8 +59,10 @@ function SellingBookCard({ book }) {
                         </Text>
                     ))}
                     <View className="flex flex-row justify-start items-center px-1">
-                        <Text className="text-gray-400">Page count: </Text>
-                        <Text className="text-[#3B0918] text-xs font-light px-1">
+                        <Text className="text-gray-400 text-lg">
+                            Page count:{" "}
+                        </Text>
+                        <Text className="text-xs font-light px-1">
                             {book?.page_count}
                         </Text>
                     </View>
@@ -68,10 +72,15 @@ function SellingBookCard({ book }) {
             {/* Summary */}
             <View className="flex-1 mt-3">
                 {book.summary ? (
-                    <Text className="p-1 text-gray-400">
-                        Summary:{" "}
-                        <Text className="text-[#3b0918]"> {book?.summary}</Text>
-                    </Text>
+                    <>
+                        <Text className="p-1 text-xl text-gray-400">
+                            Summary{" "}
+                        </Text>
+                        <Text className="text-black px-1">
+                            {" "}
+                            {book?.summary}
+                        </Text>
+                    </>
                 ) : (
                     <Text>No Summary</Text>
                 )}

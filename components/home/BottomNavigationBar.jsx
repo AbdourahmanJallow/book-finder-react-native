@@ -1,47 +1,48 @@
-import React from "react";
-import { BottomNavigation, BottomNavigationTab } from "react-native-paper";
-import Icon1 from "react-native-vector-icons/MaterialCommunityIcons";
-import Icon2 from "react-native-vector-icons/FontAwesome";
-import indexJs from "../../app/index";
-import profile from "../../app/screens/profile";
+// import React from "react";
+// import { BottomNavigation, BottomNavigationTab } from "react-native-paper";
+// import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
+// import FontAwesome from "react-native-vector-icons/FontAwesome";
+// import Home from "../../app/index";
+// import Profile from "../../app/screens/profile";
 
-const BottomNavigationBar = () => {
-    const [index, setIndex] = React.useState(0);
+// const BottomNavigationBar = () => {
+//     const [index, setIndex] = React.useState(0);
 
-    const handleTabPress = (newIndex) => {
-        setIndex(newIndex);
-    };
+//     const handleTabPress = (newIndex) => {
+//         setIndex(newIndex);
+//     };
 
-    {
-        index === 0 && <indexJs />;
-    }
-    {
-        index === 1 && <profile />;
-    }
+//     {
+//         index === 0 && <Home />;
+//     }
+//     {
+//         index === 1 && <Profile />;
+//     }
 
-    return (
-        <BottomNavigation
-            navigationState={{ index }}
-            onIndexChange={handleTabPress}
-        >
-            <BottomNavigationTab
-                icon={() => (
-                    <MaterialCommunityIcons
-                        name="home"
-                        color="black"
-                        size={24}
-                    />
-                )}
-                label="home"
-            />
-            <BottomNavigationTab
-                icon={({ color, size }) => (
-                    <Icon2 name="star" color={`black`} size={24} />
-                )}
-                label="profile"
-            />
-        </BottomNavigation>
-    );
-};
+//     return (
+//         <BottomNavigation
+//             navigationState={{ index }}
+//             onIndexChange={handleTabPress}
+//         >
+//             {/* <BottomNavigationTab
+//                 icon={() => (
+//                     <MaterialCommunityIcons
+//                         name="home"
+//                         color="black"
+//                         size={24}
+//                     />
+//                 )}
+//                 label="home"
+//             />
+//             <BottomNavigationTab
+//                 icon={() => (
+//                     <FontAwesome name="star" color={`black`} size={24} />
+//                 )}
+//                 label="profile"
+//             /> */}
+//         </BottomNavigation>
+//         // <></>
+//     );
+// };
 
-export default BottomNavigationBar;
+// export default BottomNavigationBar;

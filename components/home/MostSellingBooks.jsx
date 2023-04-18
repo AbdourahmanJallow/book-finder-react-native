@@ -14,7 +14,7 @@ function MostSellingBooks() {
     const router = useRouter();
 
     const { data, loading, error, refetch } = useFetch("search", {
-        title: "Computer science",
+        title: "Computer Programming",
         results_per_page: "25",
         page: "1",
         num_pages: 1
@@ -30,7 +30,7 @@ function MostSellingBooks() {
     return (
         <View className="mt-5 p-2">
             <View className="flex flex-row justify-between items-center">
-                <Text className="text-xl text-[#B8390E] font-semibold">
+                <Text className="text-xl text-[#1863D6] font-semibold">
                     Popular Books
                 </Text>
                 {/* <TouchableOpacity className="p-2 bg-blue-50 rounded-sm">

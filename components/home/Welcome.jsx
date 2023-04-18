@@ -33,7 +33,7 @@ function Welcome({ searchValue, setSearchValue, handlePress }) {
     return (
         <View className="w-full">
             <View className="flex flex-col mb-1">
-                <Text className="text-[#3B0918] font-bold text-4xl">
+                <Text className="text-[#001F3D] font-bold text-4xl">
                     Find Your Book
                 </Text>
             </View>
@@ -49,10 +49,10 @@ function Welcome({ searchValue, setSearchValue, handlePress }) {
                     />
                 </View>
                 <TouchableOpacity
-                    className="flex justify-center items-center"
+                    className="h-full flex justify-center items-center ml-3 p-2 rounded-2xl bg-[#001F3D]"
                     onPress={handlePress}
                 >
-                    <AntDesign name="find" size={28} color="black" />
+                    <AntDesign name="find" size={24} color="white" />
                 </TouchableOpacity>
             </View>
 
@@ -63,10 +63,10 @@ function Welcome({ searchValue, setSearchValue, handlePress }) {
                     data={categories}
                     renderItem={({ item }) => (
                         <TouchableOpacity
-                            className={`py-1 px-3 border-2 ${
+                            className={`py-1 px-3 ${
                                 category === item
-                                    ? "bg-[#3B0918] text-[#fff]"
-                                    : "border-gray-200"
+                                    ? "bg-[#001F3D] border-none text-[#fff]"
+                                    : "border-2 border-gray-200"
                             }  rounded-full`}
                             onPress={() => {
                                 setCategory(item);

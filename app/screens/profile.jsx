@@ -19,7 +19,7 @@ import {
 import { useRouter, Stack } from "expo-router";
 import { status, dashboard } from "../../assets/constants";
 
-function profile() {
+function Profile() {
     const router = useRouter();
     const [myStatus, setMyStatus] = useState("");
 
@@ -33,24 +33,22 @@ function profile() {
         >
             <Stack.Screen
                 options={{
-                    headerStyle: {
-                        backgroundColor: "#fff",
-                        font: "light"
-                    },
-                    headerShadowVisible: false,
-                    headerTitle: "My Profile",
+                    title: "My Profile",
                     headerLeft: () => (
                         <HeaderButton
+                            handlePress={() => {
+                                router.back();
+                            }}
                             icon={
                                 <AntDesign
-                                    name="arrowleft"
-                                    size={24}
+                                    name={"arrowleft"}
+                                    size={26}
                                     color="black"
                                 />
                             }
-                            handlePress={() => router.back()}
                         />
-                    )
+                    ),
+                    headerRight: null
                 }}
             />
             <View className="w-full px-5">
@@ -143,35 +141,19 @@ function profile() {
                     </View>
                 </View>
 
-                {/* <View
-                    style={{
-                        flex: 1,
-                        justifyContent: "center",
-                        // paddingHorizontal: 10
-                        position: "relative",
-                        borderRadius: 15
-                    }}
-                    className="min-h-fit mt-4 p-2 rounded-lg"
-                >
-                    <ImageBackground
-                        className="h-full rounded-lg"
+                <View className="mt-8 p-2 rounded-lg">
+                    <Image
+                        className=" rounded-lg"
                         source={require("../../assets/bg.jpg")}
                         style={{
-                            position: "absolute",
-                            top: 0,
-                            bottom: 0,
-                            left: 0,
-                            right: 0,
-                            resizeMode: "cover",
-                            height: 200,
-                            justifyContent: "flex-end",
-                            borderRadius: 10
+                            width: "100%",
+                            height: 200
                         }}
-                    ></ImageBackground>
-                </View> */}
+                    />
+                </View>
             </View>
         </View>
     );
 }
 
-export default profile;
+export default Profile;
