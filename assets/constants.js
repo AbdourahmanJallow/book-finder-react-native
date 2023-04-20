@@ -103,3 +103,19 @@ export const dashboard = [
         backgroundColor: "#94a3b8"
     }
 ];
+
+export const categories = [
+    "Art & Photography",
+    "Computer Programming",
+    "Education & Teaching",
+    "Hobbies, Sports & Outdoors",
+    "History",
+    "Literature & Fiction",
+    "Mystery & Suspense",
+    "Politics & Social Sciences",
+    "Reference",
+    "Romance",
+    "Religion & Sprituality",
+    "Science & Math",
+    "Science Fiction & Fantasy"
+];

@@ -9,22 +9,23 @@ import {
 } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
+import { categories } from "../../assets/constants";
 
-const categories = [
-    "Art & Photography",
-    "Computer Programming",
-    "Education & Teaching",
-    "Hobbies, Sports & Outdoors",
-    "History",
-    "Literature & Fiction",
-    "Mystery & Suspense",
-    "Politics & Social Sciences",
-    "Reference",
-    "Romance",
-    "Religion & Sprituality",
-    "Science & Math",
-    "Science Fiction & Fantasy"
-];
+// const categories = [
+//     "Art & Photography",
+//     "Computer Programming",
+//     "Education & Teaching",
+//     "Hobbies, Sports & Outdoors",
+//     "History",
+//     "Literature & Fiction",
+//     "Mystery & Suspense",
+//     "Politics & Social Sciences",
+//     "Reference",
+//     "Romance",
+//     "Religion & Sprituality",
+//     "Science & Math",
+//     "Science Fiction & Fantasy"
+// ];
 
 function Welcome({ searchValue, setSearchValue, handlePress }) {
     const [category, setCategory] = useState("");

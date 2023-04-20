@@ -1,10 +1,17 @@
 import React from "react";
-import { View, Text, TouchableOpacity, Image } from "react-native";
+import { View, Text, TouchableOpacity, Image, Linking } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 
 function BookListCard({ book }) {
     return (
-        <TouchableOpacity className="rounded-md shadow-sm bg-[#fafafa] flex flex-col min-h-fit">
+        <TouchableOpacity
+            className="rounded-md shadow-sm bg-[#fafafa] flex flex-col min-h-fit"
+            onPress={() =>
+                Linking.openURL(
+                    `https://www.amazon.com/s?k=${book.title}&ref=nb_sb_noss_2`
+                )
+            }
+        >
             <Text
                 className="text-[#001F3D] text-lg font-bold p-2 flex-wrap overflow-hidden"
                 numberOfLines={1}

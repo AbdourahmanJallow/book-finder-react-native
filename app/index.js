@@ -1,6 +1,6 @@
 import { View, Text, SafeAreaView, ScrollView } from "react-native";
 import { useRouter, Stack } from "expo-router";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import HeaderButton from "../components/button/HeaderButton";
 import FeaturedBooks from "../components/home/FeaturedBooks";
 import MostSellingBooks from "../components/home/MostSellingBooks";
@@ -8,14 +8,16 @@ import Welcome from "../components/home/Welcome";
 import { Feather, Ionicons, FontAwesome5 } from "@expo/vector-icons";
 
 const Home = () => {
-    /* Colors
-        rose red: #3B0918
-        burnt orange: #B8390E
-        cream: #FFF3D9
-        rose red: #DC4731
-     */
     const [searchValue, setSearchValue] = useState("");
     const router = useRouter();
+    const [showComponent, setShowComponent] = useState(false);
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setShowComponent(true);
+        }, 3000);
+
+        return () => clearTimeout(timer);
+    }, []);
 
     return (
         <SafeAreaView className="flex-1 bg-[#f3f3f3]">
@@ -63,9 +65,9 @@ const Home = () => {
                             }
                         }}
                     />
-                    <MostSellingBooks />
+                    <FeaturedBooks />
+                    {showComponent && <MostSellingBooks />}
                 </View>
-                {/* <BottomNavigationBar /> */}
             </ScrollView>
         </SafeAreaView>
     );

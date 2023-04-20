@@ -27,12 +27,9 @@ function FeaturedBooks() {
     return (
         <View className="mt-5 p-2">
             <View className="flex flex-row justify-between items-center">
-                <Text className="text-xl text-[#B8390E] font-semibold">
-                    Featured Books
+                <Text className="text-xl text-slate-600 font-semibold">
+                    Top Ranked books
                 </Text>
-                <TouchableOpacity className="p-2 bg-blue-50 rounded-sm">
-                    <Text>Show all</Text>
-                </TouchableOpacity>
             </View>
 
             <View className="mt-3">

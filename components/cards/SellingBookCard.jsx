@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, TouchableOpacity, Image } from "react-native";
+import { View, Text, TouchableOpacity, Image, Linking } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
 
@@ -9,10 +9,13 @@ function SellingBookCard({ book }) {
         <TouchableOpacity
             className="my-2 p-2 rounded-md shadow-sm bg-[#fafafa] min-h-fit"
             onPress={() =>
-                router.push({
-                    pathname: "/book-details/bookdetails",
-                    params: book
-                })
+                // router.push({
+                //     pathname: "/book-details/bookdetails",
+                //     params: { book: book }
+                // })
+                Linking.openURL(
+                    `https://www.amazon.com/s?k=${book.title}&ref=nb_sb_noss_2`
+                )
             }
         >
             {/* Book cover container plus book details */}

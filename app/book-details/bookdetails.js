@@ -1,4 +1,6 @@
 import React from "react";
+import { useRoute } from "@react-navigation/native";
+
 import {
     View,
     Text,
@@ -8,12 +10,16 @@ import {
     ActivityIndicator,
     RefreshControl
 } from "react-native";
-import { useLocation } from "expo-router";
+import {
+    useLocation,
+    useLocalSearchParams,
+    useSearchParams
+} from "expo-router";
 
 function BookDetails() {
-    // const location = useLocation();
-    // const { book } = location.params;
-
+    const route = useRoute();
+    const { book } = route.params || {};
+    console.log(book);
     return (
         <SafeAreaView
             style={{

@@ -9,12 +9,19 @@ import {
 import SellingBookCard from "../cards/SellingBookCard";
 import useFetch from "../../hooks/useFetch";
 import { useRouter } from "expo-router";
+import { categories } from "../../assets/constants";
 
 function MostSellingBooks() {
     const router = useRouter();
 
+    const [category, setCategory] = useState(null);
+    const randIndex = Math.floor(Math.random() * categories.length);
+    useEffect(() => {
+        setCategory(categories[randIndex]);
+    }, []);
+
     const { data, loading, error, refetch } = useFetch("search", {
-        title: "Computer Programming",
+        title: category,
         results_per_page: "25",
         page: "1",
         num_pages: 1
@@ -33,9 +40,6 @@ function MostSellingBooks() {
                 <Text className="text-xl text-[#1863D6] font-semibold">
                     Popular Books
                 </Text>
-                {/* <TouchableOpacity className="p-2 bg-blue-50 rounded-sm">
-                    <Text>Show all</Text>
-                </TouchableOpacity> */}
             </View>
 
             <View className="mt-3">
@@ -47,7 +51,6 @@ function MostSellingBooks() {
                     data?.map((book) => (
                         <SellingBookCard
                             book={book}
-                            // checkBookDetails={checkBookDetails}
                             key={`selling-book-${book.work_id}`}
                         />
                     ))
